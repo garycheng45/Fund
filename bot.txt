@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=big5">
+        <meta HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script type="text/javascript" src="/w/js/jquery-latest.djjs"></script>
+        <script type="text/javascript" src="/w/js/Applet2Canvas.djjs"></script>
+        <script type="text/javascript" src="/w/js/DJWebGraph.djjs"></script>
+        <title>海外基金淨值表</title>
+        <link rel=stylesheet href="/w/js/wFund.css" type="text/css">
+        <script language="JavaScript" src="/w/js/wfundjs.djjs?customershowall=0"></script>
+        <script language="JavaScript" src="/w/js/wfund.js"></script>
+        <script language="JavaScript" src="/w/js/jsFunction.js"></script>
+        <script language="JavaScript" src="/w/js/wFundUserDef.js"></script>
+        <script language="JavaScript" src="/w/js/Cookie.js"></script>
+        <script language="JavaScript" src="/w/js/DJURL.js"></script>
+        <script language="JavaScript">
+            <!--
+CheckMenu('wb02','TLZ64','109');
+// -->
+        </script>
+    </head>
+    <body>
+        <script language="javascript" src="/w/js/SU.js"></script>
+        <div id="SysJustIFRAMEDIV">
+            <table border="0" width="780">
+                <tr>
+                    <td class="wfb00c">
+                        <SCRIPT LANGUAGE=javascript>
+                            <!--
+window.onload = GoStart;
+
+function GoStart()
+{
+	ComboReset('TLZ64-0532');
+}
+
+function FundGoPage(sObj)
+{
+	var sURL = '/w/wb/wb02a.djhtm?customershowall=0&a=';
+	var sFID = sObj.selFund3.options[sObj.selFund3.selectedIndex].value;
+	if ( sFID != '0' )
+		document.location = sURL + sFID;
+}
+//-->
+
+                        </SCRIPT>
+                        <table id="oMainTable" class="wfb0c" border="0" cellpadding="1" cellspacing="1" width="780">
+                            <FORM method=POST name="wb02_frm" onsubmit="return false;">
+                                <script language="javascript" src="/w/js/WFundlistJS.djjs?customershowall=0"></script>
+                                <tr id="oScrollHead">
+                                    <td class="wfb1l" colspan="3">
+                                        <SCRIPT LANGUAGE=javascript>
+                                            <!--
+ var sObj = eval('document.' + 'wb02_frm'); 
+	iID = 'TLZ64-0532';
+	GenFundCorpCombo('109','TLZ64-0532','wb02_frm');
+	for (i=0;i<sObj.selFund_corp.options.length;i++)
+	{
+		var tmpID1 = sObj.selFund_corp.options[i].value.toUpperCase();
+		if (tmpID1 == '109') 
+		{
+			sObj.selFund_corp.selectedIndex = i;
+			break;
+		}
+	}
+	for (i=0;i<sObj.selFund3.options.length;i++)
+	{
+		var tmpID2 = sObj.selFund3.options[i].value.toUpperCase();
+		if (iID != '')
+		{
+			if (tmpID2 == iID )
+			{
+				sObj.selFund3.selectedIndex = i;
+				break;
+			}
+		}
+		else
+			sObj.selFund3.selectedIndex = 0;
+	}
+//-->
+                                        </SCRIPT>
+                                        <select onchange="selopn(this.options[this.selectedIndex].value)" name="IDS" size="1">
+                                            <option value="/w/wb/wb01.djhtm?a=TLZ64-0532&customershowall=0" >資料</option>
+                                            <option value="/w/wb/wb02a.djhtm?a=TLZ64-0532&customershowall=0"  selected>淨值</option>
+                                            <option value="/w/wb/wb03a.djhtm?a=TLZ64-0532&customershowall=0" >績效</option>
+                                            <option value="/w/wb/wb04.djhtm?a=TLZ64-0532&customershowall=0" >持股</option>
+                                            <option value="/w/wb/wb05.djhtm?a=TLZ64-0532&customershowall=0" >配息</option>
+                                            <option value="/w/wb/wb902.djhtm?a=TLZ64-0532&customershowall=0" >報告書</option>
+                                        </select>
+                                        <a href="javascript:goBuyFund('0532');">
+                                            <img src="/w/images/order.gif" border=0 alt="申購" id="chkid">
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="wfb3c" colspan="3">
+                                        <table width="100%" border="0" cellspacing="1" cellpadding="1" class="wfb7l">
+                                            <td class="wfb7c" rowspan="2">請選擇期間</td>
+                                            <td class="wfb7l">
+                                                <input type="radio" name="radioMonth" onClick="javascript:radioSelYear_onclick(true);"  checked>
+                                                <SELECT name=selYEAR onChange="javascript:SelYear_onChange(true,this.selectedIndex);">
+                                                    <OPTION>ＸＸＸＸＸ</OPTION>
+                                                </SELECT>
+                                            </td>
+                                            <td class="wfb7c" rowspan="2">
+                                                <INPUT type="button" name="BB1" value="開始查詢" onclick="javascript:jumpgo();">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="wfb7l">
+                                                <input type="radio" name="radioMonth" onClick="javascript:radioSelYear_onclick(false);" >
+                                                <script language="JavaScript" src="/w/js/month.js"></script>
+從
+                                                <SELECT name="Y2" onChange="javascript:SetMonthDate(document.wb02_frm.Y2,document.wb02_frm.M2,document.wb02_frm.D2);">
+                                                    <OPTION value="91"></OPTION>
+                                                </SELECT>年
+                                                <SELECT name="M2" onChange="javascript:SetMonthDate(document.wb02_frm.Y2,document.wb02_frm.M2,document.wb02_frm.D2);">
+                                                    <OPTION value="-1"></OPTION>
+                                                </SELECT>月
+                                                <SELECT name="D2">
+                                                    <OPTION value="-1"></OPTION>
+                                                </SELECT>日 至
+                                                <SELECT name="Y1" onChange="javascript:SetMonthDate(document.wb02_frm.Y1,document.wb02_frm.M1,document.wb02_frm.D1);">
+                                                    <OPTION value="91"></OPTION>
+                                                </SELECT>年
+                                                <SELECT name="M1" onChange="javascript:SetMonthDate(document.wb02_frm.Y1,document.wb02_frm.M1,document.wb02_frm.D1);">
+                                                    <OPTION value="-1"></OPTION>
+                                                </SELECT>月
+                                                <SELECT name="D1">
+                                                    <OPTION value="-1"></OPTION>
+                                                </SELECT>日
+                                                <SCRIPT LANGUAGE=javascript>
+                                                    <!--
+	var getYMD1 = '2018-3-30';
+	var getYMD2 = '2017-3-30';
+   PageInit(document.wb02_frm);
+   function PageInit(obj){		//在 BODY onLoad 時候的初始化
+		ShowYear(obj.Y1);						
+		ShowYear(obj.Y2);						
+		SetOptionValue(obj.M1,1,12);		
+		SetOptionValue(obj.M2,1,12);		
+		//設定初始值						
+		var YMDary1 = getYMD1.split('-');	
+		SetFocus(obj.Y1,YMDary1[0]);   
+		SetFocus(obj.M1,YMDary1[1]);		
+		var YMDary2 = getYMD2.split('-');	
+		SetFocus(obj.Y2,YMDary2[0]);   
+		SetFocus(obj.M2,YMDary2[1]);		
+		SetMonthDate(obj.Y1,obj.M1,obj.D1);		
+		SetMonthDate(obj.Y2,obj.M2,obj.D2);		
+		SetFocus(obj.D2,YMDary2[2]);		
+		SetFocus(obj.D1,YMDary1[2]);		
+	}										
+  function CheckSubmit (){												
+		var Frm = document.wb02_frm;										
+       var y1 = parseInt(Frm.Y1.options[Frm.Y1.selectedIndex].value);	
+      	var m1 = parseInt(Frm.M1.options[Frm.M1.selectedIndex].value);	
+      	var d1 = parseInt(Frm.D1.options[Frm.D1.selectedIndex].value);	
+       var y2 = parseInt(Frm.Y2.options[Frm.Y2.selectedIndex].value);	
+      	var m2 = parseInt(Frm.M2.options[Frm.M2.selectedIndex].value);	
+      	var d2 = parseInt(Frm.D2.options[Frm.D2.selectedIndex].value);	
+      	var sEDate = y1+'-'+m1+'-' + d1;							
+      	var sBDate = y2+'-'+m2+'-' + d2;							
+      	if(checkBEdate(sBDate,sEDate)){								
+			return sBDate + '_' + sEDate;							
+		}															
+		else														
+			return 'false';											
+	}																
+  function checkBEdate(sBDate,sEDate){												
+	var aymd1 = sBDate.split('-');													
+	var aymd2 = sEDate.split('-');													
+   if (aymd1.length < 3 || aymd2.length < 3 ) {									
+			alert ('日期選擇錯誤!!');													
+			return false;																
+	}																				
+   var nbdate = parseInt(aymd1[0])*10000+parseInt(aymd1[1])*100+parseInt(aymd1[2]);
+   var nedate = parseInt(aymd2[0])*10000+parseInt(aymd2[1])*100+parseInt(aymd2[2]);
+   if (nbdate > nedate) {															
+			alert('您所輸入的起始日期大於結束日期');									
+			return false;																
+	}																				
+	    return true;																
+   }																				
+//-->
+                                                </SCRIPT>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="wfb5c" colspan="3">
+                                    <div id="SysJustWebGraphDIV"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class=wfb1c colspan="3">安聯收益成長-AM穩定月收類股(美元)(本基金有相當比重投資於非投資等級之高風險債券且配息來源可能為本金)-近30日淨值</td>
+                            </tr>
+                            <tr>
+                                <td width="50%" class="wfb2c">
+                                    <table width="100%" class="wfb1c" cellspacing="1" cellpadding="1">
+                                        <tr>
+                                            <td class=wfb3c>日期</td>
+                                            <td class=wfb3c>淨值</td>
+                                            <td class=wfb3c>漲/跌</td>
+                                            <td class=wfb3c>漲跌幅(%)</td>
+                                        </tr>
+                                        <tr>
+                                            <td class=wfb5c>2018/03/29</td>
+                                            <td class=wfb5c>8.96</td>
+                                            <td class="wfb5rG">-0.04</td>
+                                            <td class="wfb5rG">-0.44</td>
+                                        </tr>
+                                        <tr>
+                                            <td class=wfb2c>2018/03/28</td>
+                                            <td class=wfb2c>9</td>
+                                            <td class="wfb2rG">-0.11</td>
+                                            <td class="wfb2rG">-1.21</td>
+                                        </tr>
+                                        <tr>
+                                            <td class=wfb5c>2018/03/27</td>
+                                            <td class=wfb5c>9.11</td>
+                                            <td class="wfb5rR">0.08</td>
+                                            <td class="wfb5rR">0.89</td>
+                                        </tr>
+                                        <tr>
+                                            <td class=wfb2c>2018/03/26</td>
+                                            <td class=wfb2c>9.03</td>
+                                            <td class="wfb2rG">-0.06</td>
+                                            <td class="wfb2rG">-0.66</td>
+                                        </tr>
+                                        <tr>
+                                            <td class=wfb5c>2018/03/23</td>
+                                            <td class=wfb5c>9.09</td>
+                                            <td class="wfb5rG">-0.06</td>
+                                            <td class="wfb5rG">-0.66</td>
+                                        </tr>
+                                        <tr>
+                                            <td class=wfb2c>2018/03/22</td>
+                                            <td class=wfb2c>9.15</td>
+                                            <td class="wfb2rG">-0.07</td>
+                                            <td class="wfb2rG">-0.76</td>
+                                        </tr>
+                                        <tr>
+                                            <td class=wfb5c>2018/03/21</td>
+                                            <td class=wfb5c>9.22</td>
+                                            <td class="wfb5rR">0.01</td>
+                                            <td class="wfb5rR">0.11</td>
+                                        </tr>
+                                        <tr>
+                                            <td class=wfb2c>2018/03/20</td>
+                                            <td class=wfb2c>9.21</td>
+                                            <td class="wfb2rG">-0.03</td>
+                                            <td class="wfb2rG">-0.32</td>
+                                        </tr>
+                                        <tr>
+                                            <td class=wfb5c>2018/03/19</td>
+                                            <td class=wfb5c>9.24</td>
+                                            <td class="wfb5rG">-0.04</td>
+                                            <td class="wfb5rG">-0.43</td>
+                                        </tr>
+                                        <tr>
+                                            <td class=wfb2c>2018/03/16</td>
+                                            <td class=wfb2c>9.28</td>
+                                            <td class="wfb2r">0</td>
+                                            <td class="wfb2r">0</td>
+                                        </tr>
+                                        <tr>
+                                            <td class=wfb5c>2018/03/15</td>
+                                            <td class=wfb5c>9.28</td>
+                                            <td class="wfb5rG">-0.08</td>
+                                            <td class="wfb5rG">-0.85</td>
+                                        </tr>
+                                        <tr>
+                                            <td class=wfb2c>2018/03/14</td>
+                                            <td class=wfb2c>9.36</td>
+                                            <td class="wfb2rG">-0.04</td>
+                                            <td class="wfb2rG">-0.43</td>
+                                        </tr>
+                                        <tr>
+                                            <td class=wfb5c>2018/03/13</td>
+                                            <td class=wfb5c>9.4</td>
+                                            <td class="wfb5rR">0.02</td>
+                                            <td class="wfb5rR">0.21</td>
+                                        </tr>
+                                        <tr>
+                                            <td class=wfb2c>2018/03/12</td>
+                                            <td class=wfb2c>9.38</td>
+                                            <td class="wfb2rR">0.06</td>
+                                            <td class="wfb2rR">0.64</td>
+                                        </tr>
+                                        <tr>
+                                            <td class=wfb5c>2018/03/09</td>
+                                            <td class=wfb5c>9.32</td>
+                                            <td class="wfb5rR">0.03</td>
+                                            <td class="wfb5rR">0.32</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td width="50%" class="wfb2c">
+                                    <table width="100%" class="wfb1c" cellspacing="1" cellpadding="1">
+                                        <tr>
+                                            <td class=wfb3c>日期</td>
+                                            <td class=wfb3c>淨值</td>
+                                            <td class=wfb3c>漲/跌</td>
+                                            <td class=wfb3c>漲跌幅(%)</td>
+                                        </tr>
+                                        <tr>
+                                            <td class=wfb5c>2018/03/08</td>
+                                            <td class=wfb5c>9.29</td>
+                                            <td class="wfb5rR">0.04</td>
+                                            <td class="wfb5rR">0.43</td>
+                                        </tr>
+                                        <tr>
+                                            <td class=wfb2c>2018/03/07</td>
+                                            <td class=wfb2c>9.25</td>
+                                            <td class="wfb2rG">-0.01</td>
+                                            <td class="wfb2rG">-0.11</td>
+                                        </tr>
+                                        <tr>
+                                            <td class=wfb5c>2018/03/06</td>
+                                            <td class=wfb5c>9.26</td>
+                                            <td class="wfb5rR">0.1</td>
+                                            <td class="wfb5rR">1.09</td>
+                                        </tr>
+                                        <tr>
+                                            <td class=wfb2c>2018/03/05</td>
+                                            <td class=wfb2c>9.16</td>
+                                            <td class="wfb2rR">0.05</td>
+                                            <td class="wfb2rR">0.55</td>
+                                        </tr>
+                                        <tr>
+                                            <td class=wfb5c>2018/03/02</td>
+                                            <td class=wfb5c>9.11</td>
+                                            <td class="wfb5rG">-0.09</td>
+                                            <td class="wfb5rG">-0.98</td>
+                                        </tr>
+                                        <tr>
+                                            <td class=wfb2c>2018/03/01</td>
+                                            <td class=wfb2c>9.2</td>
+                                            <td class="wfb2rG">-0.09</td>
+                                            <td class="wfb2rG">-0.97</td>
+                                        </tr>
+                                        <tr>
+                                            <td class=wfb5c>2018/02/28</td>
+                                            <td class=wfb5c>9.29</td>
+                                            <td class="wfb5rG">-0.03</td>
+                                            <td class="wfb5rG">-0.32</td>
+                                        </tr>
+                                        <tr>
+                                            <td class=wfb2c>2018/02/27</td>
+                                            <td class=wfb2c>9.32</td>
+                                            <td class="wfb2rR">0.03</td>
+                                            <td class="wfb2rR">0.32</td>
+                                        </tr>
+                                        <tr>
+                                            <td class=wfb5c>2018/02/26</td>
+                                            <td class=wfb5c>9.29</td>
+                                            <td class="wfb5rR">0.08</td>
+                                            <td class="wfb5rR">0.87</td>
+                                        </tr>
+                                        <tr>
+                                            <td class=wfb2c>2018/02/23</td>
+                                            <td class=wfb2c>9.21</td>
+                                            <td class="wfb2rR">0.02</td>
+                                            <td class="wfb2rR">0.22</td>
+                                        </tr>
+                                        <tr>
+                                            <td class=wfb5c>2018/02/22</td>
+                                            <td class=wfb5c>9.19</td>
+                                            <td class="wfb5rG">-0.03</td>
+                                            <td class="wfb5rG">-0.33</td>
+                                        </tr>
+                                        <tr>
+                                            <td class=wfb2c>2018/02/21</td>
+                                            <td class=wfb2c>9.22</td>
+                                            <td class="wfb2rR">0.01</td>
+                                            <td class="wfb2rR">0.11</td>
+                                        </tr>
+                                        <tr>
+                                            <td class=wfb5c>2018/02/20</td>
+                                            <td class=wfb5c>9.21</td>
+                                            <td class="wfb5r">0</td>
+                                            <td class="wfb5r">0</td>
+                                        </tr>
+                                        <tr>
+                                            <td class=wfb2c>2018/02/16</td>
+                                            <td class=wfb2c>9.21</td>
+                                            <td class="wfb2rR">0.05</td>
+                                            <td class="wfb2rR">0.55</td>
+                                        </tr>
+                                        <tr>
+                                            <td class=wfb5c>2018/02/15</td>
+                                            <td class=wfb5c>9.16</td>
+                                            <td class="wfb5rR">0.04</td>
+                                            <td class="wfb5rR">0.44</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </FORM>
+                    </table>
+                    <script language="JavaScript">
+                        <!--
+var sfund_year ='1@1@一年淨值@1@2@1@二年淨值@1@3@1@三年淨值@1@7@1@五年淨值@1@4@1@一個月淨值@1@5@1@三個月淨值@1@6@1@六個月淨值@1@';
+InitComboList(document.wb02_frm.selYEAR, '', '', '1', sfund_year, '請選擇');
+function radioSelYear_onclick(a) {		
+     if (a) {							
+			document.wb02_frm.elements['Y1'].disabled = true;    
+			document.wb02_frm.elements['Y2'].disabled = true;    
+			document.wb02_frm.elements['M1'].disabled = true;    
+			document.wb02_frm.elements['M2'].disabled = true;    
+			document.wb02_frm.elements['D1'].disabled = true;    
+			document.wb02_frm.elements['D2'].disabled = true;    
+			document.wb02_frm.elements['selYEAR'].disabled = false;    
+     }else{							
+			document.wb02_frm.elements['Y1'].disabled = false;    
+			document.wb02_frm.elements['Y2'].disabled = false;    
+			document.wb02_frm.elements['M1'].disabled = false;    
+			document.wb02_frm.elements['M2'].disabled = false;    
+			document.wb02_frm.elements['D1'].disabled = false;    
+			document.wb02_frm.elements['D2'].disabled = false;    
+			document.wb02_frm.elements['selYEAR'].disabled = true;    
+		}								
+}			
+function SelYear_onChange(a,b) {		
+     if (a) {							
+			if (b > 0) {					
+				document.wb02_frm.elements['Y1'].disabled = true;    
+				document.wb02_frm.elements['Y2'].disabled = true;    
+				document.wb02_frm.elements['M1'].disabled = true;    
+				document.wb02_frm.elements['M2'].disabled = true;    
+				document.wb02_frm.elements['D1'].disabled = true;    
+				document.wb02_frm.elements['D2'].disabled = true;    
+				document.wb02_frm.elements['selYEAR'].disabled = false;    
+				document.wb02_frm.elements['radioMonth'][0].checked = true;    
+			}else{							
+				document.wb02_frm.elements['Y1'].disabled = false;    
+				document.wb02_frm.elements['Y2'].disabled = false;    
+				document.wb02_frm.elements['M1'].disabled = false;    
+				document.wb02_frm.elements['M2'].disabled = false;    
+				document.wb02_frm.elements['D1'].disabled = false;    
+				document.wb02_frm.elements['D2'].disabled = false;    
+				document.wb02_frm.elements['selYEAR'].disabled = false;    
+				document.wb02_frm.elements['radioMonth'][0].checked = false;    
+			}								
+     }else{							
+				document.wb02_frm.elements['Y1'].disabled = false;    
+				document.wb02_frm.elements['Y2'].disabled = false;    
+				document.wb02_frm.elements['M1'].disabled = false;    
+				document.wb02_frm.elements['M2'].disabled = false;    
+				document.wb02_frm.elements['D1'].disabled = false;    
+				document.wb02_frm.elements['D2'].disabled = false;    
+				document.wb02_frm.elements['selYEAR'].disabled = true;    
+				document.wb02_frm.elements['radioMonth'][0].checked = false;    
+				document.wb02_frm.elements['radioMonth'][1].checked = true;    
+		}								
+}									
+function jumpgo(){ 
+	var bcdurl = ''; 
+	var mLink='';
+	if (document.wb02_frm.elements['radioMonth'][0].checked && document.wb02_frm.elements['selYEAR'].selectedIndex > 0) {
+		mLink = '_' + document.wb02_frm.elements['selYEAR'].options[document.wb02_frm.elements['selYEAR'].selectedIndex].value + '_0_0';
+	}else if (document.wb02_frm.elements['radioMonth'][1].checked) {
+		var sTempDate= CheckSubmit() ;
+		if (sTempDate != 'false')	
+			mLink = '_0_' + sTempDate;	
+		else return;
+	}
+	if (mLink == '') {
+		alert('請選擇要比較的區間');
+		document.wb02_frm.elements['BB1'].disabled =  false;
+		return;
+	}
+	bcdurl = '/w/wb/wb02a_TLZ64-0532' + mLink + '.djhtm';
+	bcdurl = oldURL2newURL(bcdurl); 
+	bcdurl = bcdurl + '&customershowall=0'; 
+	self.location = bcdurl ; 
+} 
+// -->
+                    </script>
+                </td>
+            </tr>
+            <tr>
+                <td>
+</td>
+            </tr>
+        </table>
+    </div>
+    <script language="javascript" src="/w/js/SD.js"></script>
+</body>
+</html>
+<SCRIPT LANGUAGE=javascript>
+    <!--
+	var $DJWebGraph1;
+	var sRenderTo = 'SysJustWebGraphDIV';
+	$(document).ready(function () {
+        if (!!$DJWebGraph) {
+        	$DJWebGraph1 = new $DJWebGraph();
+            $DJWebGraph1.CallBack = GetBcdData;
+            $DJWebGraph1.CreateGraphObject({
+                'CanvasClass': 'canvas', //表示為複合式圖形
+                'ID': 'wr02', //單一Line 價格走勢圖使用
+                'Width': '760',
+                'Height': '300',
+                'RenderTo': sRenderTo,
+                'Type': ["Mountain"],
+                'Caption': '安聯收益成長-AM穩定月收類股(美元)(本基金有相當比重投資於非投資等級之高風險債券且配息來源可能為本金) 基金淨值走勢圖',
+                'Unit': ["元(美元)"],
+                'GDN1':["C4EBFD"],
+                'GDN2':["0EB5F0"],
+                'LineColor':["ffffff"],
+                'BgColor': 'ffffff',
+                'BCDUrl': '/w/bcd/BCDNavList.djbcd?a=TLZ64&b=1&c=2017-3-30&d=2018-3-30'
+            })
+        }
+
+    });
+
+    function GetBcdData(data) {
+        if (!!data.length) {
+            var arrData = data.split(' ');
+            var X = arrData[0];
+
+            var ArrY = [[arrData[1]]];
+
+            $DJWebGraph1.SetGraphBcd({ 'X': X, 'Y': ArrY });
+        }
+    }
+//-->
+
+</SCRIPT>
