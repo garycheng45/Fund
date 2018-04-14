@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.4\lib\net451\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.7.2.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlAgilityPack.1.7.2\lib\Net45\HtmlAgilityPack.dll</HintPath>
       <Private>True</Private>
@@ -49,8 +53,12 @@
       <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.1.1.2\lib\netstandard1.1\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Npgsql, Version=3.2.7.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.3.2.7\lib\net451\Npgsql.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="RestClient, Version=2.3.15.9, Culture=neutral, processorArchitecture=MSIL">
@@ -72,6 +80,10 @@
       <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.4.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
       <Private>True</Private>
@@ -89,8 +101,21 @@
     <Compile Include="Craw\FundRich.cs" />
     <Compile Include="Craw\Interface\ICrawler.cs" />
     <Compile Include="Craw\Model\FundData.cs" />
+    <Compile Include="Enum\DBEnum.cs" />
+    <Compile Include="Model\dao\AbsGetNotifyConfigData.cs" />
+    <Compile Include="Model\dao\AbsGetNotifyData.cs" />
+    <Compile Include="Model\dao\Interface\IGetNotifydata.cs" />
+    <Compile Include="Model\dao\Interface\INotifyConfig.cs" />
+    <Compile Include="Model\dao\Json\NotifyConfigModel.cs" />
+    <Compile Include="Model\dao\Json\NotifyDataModel.cs" />
+    <Compile Include="Model\dao\Json\ReadFile.cs" />
+    <Compile Include="Model\DataModel\CrawlerResultData.cs" />
+    <Compile Include="Model\DataModel\Member.cs" />
+    <Compile Include="Model\DataModel\NotifyConfig.cs" />
+    <Compile Include="Model\DataModel\NotifyData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SystemConfig\SystemInfo.cs" />
     <Compile Include="WebCore\WebBase.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -100,11 +125,11 @@
   <ItemGroup>
     <Folder Include="ConfigReader\" />
     <Folder Include="Log\" />
-    <Folder Include="Model\dao\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Craw\Sample\台灣銀行.html" />
     <Content Include="Craw\Sample\基富通.html" />
+    <Content Include="SQL\fund.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

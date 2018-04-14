@@ -1,0 +1,22 @@
+[
+	{
+		"Name": "富坦-新興國家固定收益美元A(Mdis)",
+		"Resource": "BankOfTaiwan",
+		"Url": "http://fund.bot.com.tw/w/wb/wb02a.djhtm?customershowall=0&a=FLZB8-0852"
+	},
+	{
+		"Name": "富蘭克林黃金美元A",
+		"Resource": "BankOfTaiwan",
+		"Url": "http://fund.bot.com.tw/w/wb/wb02a.djhtm?customershowall=0&a=FLZ01-A710"
+	},
+	{
+		"Name": "安聯收益成長基金-AM穩定月收類股",
+		"Resource": "FundRich",
+		"Url": "https://www.fundrich.com.tw/fund/019002.html?id=019002#%E6%B7%A8%E5%80%BC%E8%B5%B0%E5%8B%A2"
+	},
+	{
+		"Name": "",
+		"Resource": "FundRich",
+		"Url": "https://www.fundrich.com.tw/fund/018055.html?id=018055#%E6%B7%A8%E5%80%BC%E8%B5%B0%E5%8B%A2"
+	}
+]
