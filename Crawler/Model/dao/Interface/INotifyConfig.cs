@@ -9,6 +9,10 @@ namespace Crawler.Model.dao.Interface
 {
     interface INotifyConfig
     {
+        /// <summary>
+        /// 取得使用者設定通知資料
+        /// </summary>
+        /// <returns></returns>
         List<Member> GetMemberNotifyConfig();
     }
 }

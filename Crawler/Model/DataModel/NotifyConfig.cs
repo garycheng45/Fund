@@ -27,11 +27,11 @@ namespace Crawler.Model.DataModel
             set { _Change = value; }
         }
 
-        private int _Value;
+        private decimal _Value;
         /// <summary>
         /// 通知項目的URL
         /// </summary>
-        public int Value
+        public decimal Value
         {
             get { return _Value; }
             set { _Value = value; }

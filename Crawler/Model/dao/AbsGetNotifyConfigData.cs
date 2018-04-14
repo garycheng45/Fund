@@ -10,6 +10,10 @@ namespace Crawler.Model.dao
 {
     abstract class AbsGetNotifyConfigData : INotifyConfig
     {
+        /// <summary>
+        /// 取得使用者設定的通知資訊
+        /// </summary>
+        /// <returns></returns>
         public abstract List<Member> GetMemberNotifyConfig();
 
         /// <summary>
@@ -17,7 +21,7 @@ namespace Crawler.Model.dao
         /// </summary>
         /// <param name="datas">所有使用者設定資料</param>
         /// <returns>distinct後的設定名稱</returns>
-        protected List<string> GetDistinctNotifyName(List<Member> datas)
+        public List<string> GetDistinctNotifyName(List<Member> datas)
         {
             List<string> retdata = new List<string>();
 

@@ -22,9 +22,9 @@ namespace Crawler.Model.DataModel
             set { _Name = value; }
         }
 
-        private int _NotifyType;
+        private NotifyType _NotifyType;
 
-        public int NotifyType
+        public NotifyType NotifyType
         {
             get { return _NotifyType; }
             set { _NotifyType = value; }

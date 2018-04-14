@@ -12,6 +12,10 @@ namespace Crawler.Model.dao.Json
 {
     class NotifyConfigModel : AbsGetNotifyConfigData
     {
+        /// <summary>
+        /// 取得使用者設定通知資料
+        /// </summary>
+        /// <returns></returns>
         public override List<Member> GetMemberNotifyConfig()
         {
             List<Member> memberData = new List<Member>();
@@ -28,7 +32,7 @@ namespace Crawler.Model.dao.Json
                     member.NotifyConfig = JsonConvert.DeserializeObject<List<NotifyConfig>>(json);
                     memberData.Add(member);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     continue;
                     //throw;

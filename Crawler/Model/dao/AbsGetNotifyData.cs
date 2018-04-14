@@ -18,7 +18,7 @@ namespace Crawler.Model.dao
         /// <param name="settingDatas">所有資料源資訊</param>
         /// <param name="configNames">被設定通知的資料名稱</param>
         /// <returns></returns>
-        protected List<NotifyData> GetConfigNotify(List<NotifyData> settingDatas, List<string> configNames)
+        public List<NotifyData> GetConfigNotify(List<NotifyData> settingDatas, List<string> configNames)
         {
             List<NotifyData> configNotify = new List<NotifyData>();
             

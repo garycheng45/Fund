@@ -98,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Craw\BankOfTaiwan.cs" />
+    <Compile Include="Craw\CrawerCreateFactory.cs" />
     <Compile Include="Craw\FundRich.cs" />
     <Compile Include="Craw\Interface\ICrawler.cs" />
     <Compile Include="Craw\Model\FundData.cs" />
@@ -113,6 +114,7 @@
     <Compile Include="Model\DataModel\Member.cs" />
     <Compile Include="Model\DataModel\NotifyConfig.cs" />
     <Compile Include="Model\DataModel\NotifyData.cs" />
+    <Compile Include="Model\PriceNotify.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SystemConfig\SystemInfo.cs" />

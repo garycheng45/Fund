@@ -18,6 +18,9 @@ namespace Crawler
         {
             var a = new NotifyDataModel();
             var b = a.GetNotifyData();
+
+            var c = new NotifyConfigModel();
+            var d = c.GetMemberNotifyConfig();
             Console.ReadLine();
         }
 
