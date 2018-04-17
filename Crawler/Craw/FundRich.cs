@@ -23,7 +23,7 @@ namespace Crawler.Craw
             doc.LoadHtml(html);
             var divContainers = doc.DocumentNode.SelectNodes(@"//div[@class='container']");
 
-            if (divContainers.Count < 2)
+            if (divContainers == null || divContainers.Count < 2)
                 return data;
 
             var targetContainer = divContainers[1];
@@ -79,8 +79,8 @@ namespace Crawler.Craw
                 DateTime.TryParse(pCols[0].InnerText, out tmpTime);
                 p.Time = tmpTime;
 
-                double tmpPrice;
-                double.TryParse(pCols[1].InnerText, out tmpPrice);
+                decimal tmpPrice;
+                decimal.TryParse(pCols[1].InnerText, out tmpPrice);
                 p.Price = tmpPrice;
 
                 //double tmpRiseValue;

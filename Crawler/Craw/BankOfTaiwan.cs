@@ -71,8 +71,8 @@ namespace Crawler.Craw
                 DateTime.TryParse(pCols[0].InnerText, out tmpTime);
                 p.Time = tmpTime;
 
-                double tmpPrice;
-                double.TryParse(pCols[1].InnerText, out tmpPrice);
+                decimal tmpPrice;
+                decimal.TryParse(pCols[1].InnerText, out tmpPrice);
                 p.Price = tmpPrice;
 
                 double tmpRiseValue;

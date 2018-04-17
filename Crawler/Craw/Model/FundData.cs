@@ -19,12 +19,12 @@ namespace Crawler.Craw.Model
             set { _Time = value; }
         }
 
-        private double _Price;
+        private decimal _Price;
 
         /// <summary>
         /// 價錢
         /// </summary>
-        public double Price
+        public decimal Price
         {
             get { return _Price; }
             set { _Price = value; }

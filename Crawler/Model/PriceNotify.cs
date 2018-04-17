@@ -20,10 +20,21 @@ namespace Crawler.Model
         List<Member> _NotifyConfigDatas;
         List<NotifyData> _NotifyData;
         List<CrawlerResultData> _CrawlerData;
+        /// <summary>
+        /// Name 價錢: 目前價錢 高於(低於)設定價錢 設定價錢
+        /// </summary>
+        string _NotifyMessage = "{0} 價錢: {1} {2}設定價錢 {3}";
         public PriceNotify()
         {
             _NotifyConfigObj = new NotifyConfigModel();
             _NotifyObj = new NotifyDataModel();
+            _CrawlerData = new List<CrawlerResultData>();
+        }
+
+        public void PriceNotifyProcess()
+        {
+            DoDataPrepare();
+            StartPriceCompare();
         }
 
         public void DoDataPrepare()
@@ -44,11 +55,13 @@ namespace Crawler.Model
             foreach (var nd in _NotifyData)
             {
                 wb.SetURL(nd.Url);
-                string html = wb.GetHtmlContent();
+                string html = wb.GetHtmlContent(nd.Url);
                 if(nd.NotifyType == Enum.DBEnum.NotifyType.Fund)
                 {
                     IFundCrawler crawer = CrawlerCreateFactory.CreateFundCrawler(nd.Resource);
                     var fundDatas =  crawer.ParseFund(html);
+                    if (fundDatas.Count == 0)
+                        continue;
                     var crd = ConvertFundDataToCrawerData(fundDatas, nd.Name);
                     _CrawlerData.Add(crd);
                 }
@@ -59,34 +72,39 @@ namespace Crawler.Model
         {
             CrawlerResultData crawlerData = new CrawlerResultData();
             FundData fund = funds.OrderByDescending(x => x.Time).FirstOrDefault();
-            return new CrawlerResultData()
+            var ret = new CrawlerResultData()
             {
                 Name = name,
                 Value = fund.Price
             };
+            return ret;
         }
-        //public async Task DoCrawerAsync()
-        //{
-        //    foreach (var nd in _NotifyData)
-        //    {
-        //        await Crawer(nd);
-        //        Console.WriteLine("crawering " + nd.Name);
-        //    }
-            
-        //}
-
-        //private Task Crawer(NotifyData notifyData)
-        //{
-        //    WebBase wb = new WebBase();
-        //    wb.SetURL(notifyData.Url);
-        //    string html = wb.GetHtmlContent();
-            
-        //    return t;
-        //}
-
+        
         public void StartPriceCompare()
         {
-
+            foreach (var member in _NotifyConfigDatas)
+            {
+                foreach (var nc in member.NotifyConfig)
+                {
+                    //var nd = _NotifyData.Where(x => x.Name == nc.Name).FirstOrDefault();
+                    var cd = _CrawlerData.Where(x => x.Name == nc.Name).FirstOrDefault();
+                    if(nc.Change == Enum.DBEnum.Change.Rise)
+                    {
+                        if(nc.Value >= cd.Value)
+                        {
+                            Console.WriteLine(string.Format(_NotifyMessage, nc.Name, cd.Value, "高於", nc.Value));
+                            //Console.WriteLine(nc.Name + " value: " +cd.Value + " 價錢高於設定值: "　+ nc.Value);
+                        }
+                    }
+                    else if(nc.Change == Enum.DBEnum.Change.Fall)
+                    {
+                        if(nc.Value <= cd.Value)
+                        {
+                            Console.WriteLine(string.Format(_NotifyMessage, nc.Name, cd.Value, "低於", nc.Value));
+                        }
+                    }
+                }
+            }
         }
 
         

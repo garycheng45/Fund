@@ -16,9 +16,9 @@ namespace Crawler.Model.DataModel
             set { _Name = value; }
         }
 
-        private double _Value;
+        private decimal _Value;
 
-        public double Value
+        public decimal Value
         {
             get { return _Value; }
             set { _Value = value; }
