@@ -125,7 +125,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ConfigReader\" />
     <Folder Include="Log\" />
   </ItemGroup>
   <ItemGroup>
