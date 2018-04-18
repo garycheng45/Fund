@@ -15,7 +15,7 @@ namespace Crawler
 {
     class Program
     {
-        static string testFilePath = @"D:\practice\Fund\fundrich.txt";
+        
         static void Main(string[] args)
         {
             PriceNotify pn = new PriceNotify();
@@ -23,7 +23,6 @@ namespace Crawler
             
             
             Console.WriteLine("end");
-            Console.ReadLine();
         }
 
 

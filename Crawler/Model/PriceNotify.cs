@@ -86,14 +86,12 @@ namespace Crawler.Model
             {
                 foreach (var nc in member.NotifyConfig)
                 {
-                    //var nd = _NotifyData.Where(x => x.Name == nc.Name).FirstOrDefault();
                     var cd = _CrawlerData.Where(x => x.Name == nc.Name).FirstOrDefault();
                     if(nc.Change == Enum.DBEnum.Change.Rise)
                     {
                         if(nc.Value >= cd.Value)
                         {
                             Console.WriteLine(string.Format(_NotifyMessage, nc.Name, cd.Value, "高於", nc.Value));
-                            //Console.WriteLine(nc.Name + " value: " +cd.Value + " 價錢高於設定值: "　+ nc.Value);
                         }
                     }
                     else if(nc.Change == Enum.DBEnum.Change.Fall)
