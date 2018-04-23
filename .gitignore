@@ -244,3 +244,9 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 
+/Crawler/Properties/Settings.settings
+/Crawler/Properties/Settings.Designer.cs
+/Crawler/Env/data/Member/tony.json
+/Crawler/Env/data/NotifyData/List.json
+/Crawler/Env/data/NotifyConfig/tony.json
+/Crawler/Env/etc/MailServerConfig.json

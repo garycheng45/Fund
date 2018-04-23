@@ -2,7 +2,9 @@
 using Crawler.Craw.Interface;
 using Crawler.Model;
 using Crawler.Model.dao.Json;
+using Crawler.SystemConfig;
 using Crawler.WebCore;
+using Mail;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,6 +13,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Crawler
 {
     class Program
@@ -18,10 +21,14 @@ namespace Crawler
         
         static void Main(string[] args)
         {
+            SystemInfo si = new SystemInfo();
             PriceNotify pn = new PriceNotify();
-            pn.PriceNotifyProcess();
-            
-            
+            foreach (var item in pn.PriceNotifyProcess())
+            {
+                SendEmail sendEmail = new SendEmail();
+                sendEmail.SendNotifyMail(Enum.DBEnum.NotifyType.Fund, item.NotifyString, item.UserEmail, item.UserName);
+            }
+            //var memberNotify = pn.PriceNotifyProcess();
             Console.WriteLine("end");
         }
 

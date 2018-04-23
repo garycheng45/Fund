@@ -1,14 +1,13 @@
 ﻿using Crawler.Enum.DBEnum;
+using Crawler.Properties;
 using Crawler.SystemConfig;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Mail
 {
@@ -31,29 +30,43 @@ namespace Mail
             ReadSmtpConfig();
         }
 
-        public bool SendNotifyMail(NotifyType type, IEnumerable<string> notifyString, string userEmail)
+        /// <summary>
+        /// 寄送到價通知
+        /// </summary>
+        /// <param name="type">通知類型 基金 匯率</param>
+        /// <param name="notifyString">通知資訊</param>
+        /// <param name="userEmail">使用者email</param>
+        /// <param name="userName">使用者名稱</param>
+        /// <returns></returns>
+        public bool SendNotifyMail(NotifyType type, IEnumerable<string> notifyString, string userEmail, string userName = "")
         {
             var client = CreateEmailObj();
             StringBuilder sb = new StringBuilder();
             string subject = "";
-            if(type == NotifyType.Fund)
+            if (type == NotifyType.Fund)
             {
                 subject = "基金到價通知";
             }
-            else if(type == NotifyType.Rate)
+            else if (type == NotifyType.Rate)
             {
                 subject = "匯率到價通知";
             }
 
             var from = CreateMailAddress(_Config.Account, "博");
 
-            var to = CreateMailAddress(_Config.Account);
+            var to = CreateMailAddress(userEmail);
 
             MailMessage msg = new MailMessage(from, to);
 
             msg.Subject = subject;
             msg.SubjectEncoding = Encoding.UTF8;
-            msg.Body = GetEmailBody(notifyString);
+            string bodyTitle = "{0}您好:" + Environment.NewLine + Environment.NewLine;
+            if (userName == "")
+                msg.Body = string.Format(bodyTitle, "使用者");
+            else
+                msg.Body = string.Format(bodyTitle, userName);
+
+            msg.Body += GetEmailBody(notifyString);
             msg.BodyEncoding = Encoding.UTF8;
 
             msg.IsBodyHtml = false;
@@ -62,9 +75,8 @@ namespace Mail
             {
                 client.Send(msg);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
                 throw;
             }
 
@@ -76,12 +88,13 @@ namespace Mail
             StringBuilder sb = new StringBuilder();
             foreach (var m in msg)
             {
-                sb.Append(m);
+                sb.Append(m + Environment.NewLine);
+                
             }
             return sb.ToString();
         }
 
-        private MailAddress CreateMailAddress(string account,string name = "")
+        private MailAddress CreateMailAddress(string account, string name = "")
         {
             if (name == "")
                 name = account;
@@ -94,6 +107,7 @@ namespace Mail
         {
             string json = File.ReadAllText(_MailConfigPath, Encoding.Default);
             _Config = JsonConvert.DeserializeObject<SmtpConfig>(json);
+            
         }
 
         private SmtpClient CreateEmailObj()

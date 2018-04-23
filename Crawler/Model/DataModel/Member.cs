@@ -20,6 +20,15 @@ namespace Crawler.Model.DataModel
             set { _Account = value; }
         }
 
+        private string _Email;
+
+        public string Email
+        {
+            get { return _Email; }
+            set { _Email = value; }
+        }
+
+
         private List<NotifyConfig> _NotifyConfig;
         /// <summary>
         /// 使用者設定的到價通知

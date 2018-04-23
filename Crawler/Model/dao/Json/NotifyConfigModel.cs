@@ -25,6 +25,17 @@ namespace Crawler.Model.dao.Json
             foreach (var file in fileList)
             {
                 var member = new Member();
+                var memberSetupFileName = Path.GetFileNameWithoutExtension(file);
+                string memberJson = ReadFile.ReadJsonFile(Path.GetFileName(file), SystemInfo.member);
+                try
+                {
+                    member = JsonConvert.DeserializeObject<Member>(memberJson);
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
                 member.Account = Path.GetFileNameWithoutExtension(file);
                 string json = ReadFile.ReadJsonFile(file, SystemInfo.notifyConfig);
                 try
