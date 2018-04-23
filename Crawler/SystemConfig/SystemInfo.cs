@@ -12,9 +12,9 @@ namespace Crawler.SystemConfig
     {
         
         static Settings setting = new Settings();   
-        //public static string root = AppDomain.CurrentDomain.BaseDirectory;
+        public static string root = AppDomain.CurrentDomain.BaseDirectory;
         //public static string root = @"D:\practice\Fund\Crawler\Env\";
-        public static string root = setting.Root;
+        //public static string root = setting.Root;
         public static string etc = Path.Combine(root, "etc") + Path.DirectorySeparatorChar;
         public static string data = Path.Combine(root, "data") + Path.DirectorySeparatorChar;
         public static string notifyConfig = Path.Combine(data, "NotifyConfig") + Path.DirectorySeparatorChar;
